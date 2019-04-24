@@ -1,0 +1,71 @@
+<p>
+    あなたはボードゲーム大会に向かっています。厳しい試合になりそうです。
+    ダイス確率について学習しておきましょう。
+</p>
+
+<p>
+    複数のサイコロを同時に振り、それらの合計が狙った数になる確率を計算しましょう。
+    たとえば、2つの6面ダイスを振って、合計が3になる確率は2/36または5.56％です。これは、≒0.0556として返されるはずです。
+    （1+2, 2+1の2通り / 6*6）
+    結果は4桁の精度で±0.0001となります。
+</p>
+
+
+<p style="text-align: center;">
+    <img class="for_info_only"
+         title="distribution"
+         src="{{MEDIA}}distribution.png"
+         alt="distribution"
+         width="600px"/>
+    <img class="for_editor_only"
+         title="distribution"
+         src="{{MEDIA}}distribution.png"
+         alt="distribution"
+         width="380px"/>
+</p>
+<p>
+    各テストで、すべてのサイコロが同じで、1から辺の数まで（両端を含む）番号が付けられていると仮定します。
+    したがって、4面ダイス（D4）の場合、1、2、3、4のいずれかが出る確率は等しくなります。
+    20面ダイス（D20）は1から20の任意の数字が出る確率が等しくなります。
+</p>
+
+<p>
+    <strong>Tips:</strong> Be careful if you want to use a brute-force solution -- you could have a very, very long wait for edge cases.
+</p>
+<p>
+    <strong>Input:</strong>
+    3つの引数 ダイスの数、ダイスあたりの面の数、合計目標数。
+</p>
+
+<p>
+    <strong>Output:</strong>
+    The probability of getting exactly target number on a single roll of the given dice as a float.
+</p>
+
+<p>
+    <strong>Example:</strong>
+</p>
+<pre class="brush: python">
+probability(2, 6, 3) == 0.0556  # 2 six-sided dice have a 5.56% chance of totalling 3
+probability(2, 6, 4) == 0.0833
+probability(2, 6, 7) == 0.1667
+probability(2, 3, 5) == 0.2222  # 2 three-sided dice have a 22.22% chance of totalling 5
+probability(2, 3, 7) == 0       # The maximum you can roll on 2 three-sided dice is 6
+probability(3, 6, 7) == 0.0694
+probability(10, 10, 50) == 0.0375
+</pre>
+
+<p class="for_info_only">
+    <strong>How it is used:</strong>
+    This task illustrates some of the basics of probability.
+    Many events can be described as the combination of other events.
+    In this case you're combining several dice into one total to crit the Orc King for massive damage.
+</p>
+
+<p>
+    <strong>Preconditions:</strong><br/>
+    1 &le; <strong>dice_number</strong> &le; 10<br/>
+    2 &le; <strong>sides</strong> &le; 20<br/>
+    0 &le; <strong>target</strong> &lt; 1000
+
+</p>
